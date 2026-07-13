@@ -1,0 +1,28 @@
+{
+  "note": "Canonical AudioDN v1 path templates. Regenerated from the public OpenAPI by scripts/sync-canonical.mjs. Used by validate.mjs to detect invented endpoints.",
+  "openapiVersion": "1.0.0",
+  "apiBase": "https://api.audiodelivery.net/v1",
+  "paths": [
+    "/v1/api_key",
+    "/v1/collection",
+    "/v1/collection/{collection_id}",
+    "/v1/collection/{collection_id}/cover",
+    "/v1/collection/{collection_id}/track",
+    "/v1/creator",
+    "/v1/creator/{creator_id}",
+    "/v1/organization/{organization_id}",
+    "/v1/play/{play_session_id}/{play_track_id}",
+    "/v1/play/{play_session_id}/{play_track_id}/{variant_index}/download",
+    "/v1/play_session/{play_session_id}",
+    "/v1/play_session/{scope}",
+    "/v1/track",
+    "/v1/track/{track_id}",
+    "/v1/track/{track_id}/cover",
+    "/v1/track/{track_id}/variant",
+    "/v1/upload/{upload_session_id}/track",
+    "/v1/upload_session",
+    "/v1/upload_session/{upload_session_id}",
+    "/v1/variant",
+    "/v1/variant/{variant_id}"
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "name": "@audiodn/agent-kit",
+  "version": "0.1.0",
+  "description": "Install AudioDN coding-agent guidance (AGENTS.md, CLAUDE.md, Copilot, Cursor, Skill) and validate AudioDN integrations.",
+  "type": "module",
+  "bin": {
+    "audiodn-agent-kit": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "assets",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "audiodn",
+    "audio",
+    "agents",
+    "coding-agent",
+    "claude",
+    "copilot",
+    "cursor",
+    "skill",
+    "cli",
+    "scaffold"
+  ],
+  "author": {
+    "name": "AudioDN",
+    "url": "https://github.com/audiodn"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/audiodn/audiodn-agent-kit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/audiodn/audiodn-agent-kit/issues"
+  },
+  "homepage": "https://github.com/audiodn/audiodn-agent-kit#readme",
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "lint": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "sync": "node scripts/sync-canonical.mjs",
+    "smoke": "node scripts/smoke.mjs",
+    "prepublishOnly": "npm run test && npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "typescript": "^5.4.0",
+    "vitest": "^2.1.8"
+  }
+}

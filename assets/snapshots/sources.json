@@ -1,0 +1,19 @@
+{
+  "openapiVersion": "1.0.0",
+  "generatedBy": "scripts/sync-canonical.mjs",
+  "note": "Seeded from the canonical monorepo openapi.json (ahead of the current public deploy). scripts/sync-canonical.mjs refreshes from https://audiodeliverynetwork.com once redeployed.",
+  "sources": [
+    {
+      "name": "openapi.json",
+      "url": "https://audiodeliverynetwork.com/openapi.json",
+      "fetchedAt": "2026-07-13",
+      "sha256": "e1554673a4d7287a15460bdc2761e0bbc38286b4e101df26b00fc5e9205e2deb"
+    },
+    {
+      "name": "llms-full.txt",
+      "url": "https://audiodeliverynetwork.com/llms-full.txt",
+      "fetchedAt": "2026-07-13",
+      "sha256": "41980ad7654d997132683399b6a4ab38fce87944ebb9c5cf1779daea996d18af"
+    }
+  ]
+}
