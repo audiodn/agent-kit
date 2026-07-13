@@ -23,6 +23,9 @@ const SCAN_EXT = new Set([
 const SKIP_DIRS = new Set([
   'node_modules', '.git', 'dist', 'build', '.next', 'out', 'coverage',
   '.turbo', '.wrangler', 'vendor', '.venv', '__pycache__',
+  // Agent tooling / guidance, not application code under test. Skipping avoids
+  // scanning this validator's own source (which contains the very patterns it detects).
+  '.agents',
 ]);
 
 // ---- endpoint truth -------------------------------------------------------
