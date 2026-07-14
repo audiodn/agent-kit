@@ -31,6 +31,12 @@ implementing, and run the validator before you finish.
 - `references/webhooks.md` — track/file/collection webhooks.
 - `references/security.md` — secret handling and the validator's rules.
 
+MCP-capable assistants can also call AudioDN via its MCP server instead of raw
+HTTP - hosted at `https://mcp.audiodelivery.net/mcp` (bring-your-own-key header)
+or local via `npx @audiodn/mcp` - which exposes the API plus grounded doc tools.
+The same non-negotiable rules apply (server keys stay server-side; verify against
+the canonical OpenAPI).
+
 ## Framework templates
 
 Copy-adapt the correct server/client boundary for your stack:

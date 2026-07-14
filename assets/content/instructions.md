@@ -26,12 +26,30 @@ write or review code that touches AudioDN.
 
 {{PARTIALS}}
 
+## MCP server (optional)
+
+If your assistant speaks the Model Context Protocol, you can call AudioDN through
+its MCP server instead of writing raw HTTP. It exposes the same API operations as
+tools plus offline, grounded documentation/knowledge tools, so the correct
+endpoints and fields come from the canonical spec rather than guesswork. Two ways
+to connect:
+
+- Hosted (remote): a public Streamable HTTP endpoint at
+  `https://mcp.audiodelivery.net/mcp`. Knowledge/doc tools work with no key; live
+  API tools activate when you send your AudioDN key as `Authorization: Bearer
+  adn_...` or `X-ADN-API-Key: adn_...`. Delete tools are never exposed there.
+- Local (stdio): `npx @audiodn/mcp` with `ADN_API_KEY` set to a server-side key.
+
+This does not replace the rules above — server API keys still stay server-side,
+and the same canonical OpenAPI remains the source of truth.
+
 ## Canonical references
 
 - OpenAPI 3.1 spec: https://audiodeliverynetwork.com/openapi.json
 - LLM-readable overview: https://audiodeliverynetwork.com/llms-full.txt
 - Docs: https://audiodeliverynetwork.com/docs
 - AI-agent guide: https://audiodeliverynetwork.com/for-ai-agents
+- MCP server: https://www.npmjs.com/package/@audiodn/mcp
 
 ## Validate your work
 
