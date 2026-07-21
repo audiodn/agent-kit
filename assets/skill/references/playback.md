@@ -19,6 +19,10 @@ Sign a delivery URL on your server with a URL Signing key (HMAC-SHA256). The
 `verify` query parameter must be appended LAST. The signing secret is
 server/edge-only. Skips play sessions for public tracks.
 
+Build the URL from the durable `track.base_url` returned at track creation (a
+prefix on the organization's unique `audiodelivery.net` subdomain): append the
+variant suffix and extension (e.g. `{base_url}_128.mp3`), then sign.
+
 ## Components
 
 Pass a Client-Side Player key or a server-provisioned play session ID to

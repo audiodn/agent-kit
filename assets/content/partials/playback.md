@@ -8,7 +8,9 @@ Two supported ways to deliver audio, both gated by readiness:
   Bearer). Best for per-listener authorization and short expiry.
 - **Signed delivery**: sign a delivery URL on your server with a URL Signing key
   (HMAC-SHA256; the `verify` query param must be appended **last**). Skips play
-  sessions for public/entitled tracks. The signing secret is server-only.
+  sessions for public/entitled tracks. The signing secret is server-only. Build
+  the URL from the durable `track.base_url` returned at track creation, plus the
+  variant suffix and extension (e.g. `{base_url}_128.mp3`).
 
 For components, pass a Client-Side Player key or a server-provisioned play
 session ID to `<audiodn-player>`. See `references/playback.md` in the Skill.
