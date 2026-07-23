@@ -22,7 +22,7 @@ npx @audiodn/agent-kit init
 Kit-owned content lives inside a managed block:
 
 ```
-<!-- AUDIODN:BEGIN v0.1.0 (managed by @audiodn/agent-kit — do not edit inside) -->
+<!-- AUDIODN:BEGIN v0.1.1 (managed by @audiodn/agent-kit — do not edit inside) -->
 ...
 <!-- AUDIODN:END -->
 ```

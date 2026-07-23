@@ -3,6 +3,17 @@
 All notable changes to `@audiodn/agent-kit` are documented here. This project
 adheres to [Semantic Versioning](https://semver.org/).
 
+## 0.1.1
+
+- Point signed-delivery docs link at
+  `/docs/integration/playback?option=signed-delivery` (retired path redirect).
+- Clarify upload/play guidance: per-track upload URL creation after the upload
+  session; keep `track.base_url` for signed delivery.
+- Note the AudioDN MCP server (hosted or `npx @audiodn/mcp`) in instructions and
+  the portable Skill as an alternative to raw HTTP.
+- `validate`: skip `.agents` tooling directory to avoid self-scan false positives.
+- Scope npm provenance to CI publishes; normalize repository URL.
+
 ## 0.1.0
 
 - Initial release.
