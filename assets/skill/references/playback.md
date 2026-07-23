@@ -29,5 +29,5 @@ Pass a Client-Side Player key or a server-provisioned play session ID to
 `<audiodn-player>`. Do not embed a server key.
 
 Canonical: https://audiodeliverynetwork.com/docs/api/play-sessions and
-`/docs/integration/signed-delivery`.
+`/docs/integration/playback?option=signed-delivery`.
 OpenAPI operationIds: `createPlaySession`, `getPlayTrack`, `downloadPlayTrackVariant`.
