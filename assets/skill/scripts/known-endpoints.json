@@ -20,10 +20,13 @@
     "/v1/track/{track_id}",
     "/v1/track/{track_id}/cover",
     "/v1/track/{track_id}/variant",
+    "/v1/track/{track_id}/output",
     "/v1/upload/{upload_session_id}/track",
     "/v1/upload_session",
     "/v1/upload_session/{upload_session_id}",
     "/v1/variant",
-    "/v1/variant/{variant_id}"
+    "/v1/variant/{variant_id}",
+    "/v1/output_preset",
+    "/v1/output_preset/{output_preset_id}"
   ]
 }

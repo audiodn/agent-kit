@@ -3,6 +3,20 @@
 All notable changes to `@audiodn/agent-kit` are documented here. This project
 adheres to [Semantic Versioning](https://semver.org/).
 
+## 0.3.1
+
+- Prefer player attribute `outputs` (`output-indexes` / `variants` remain
+  compatible aliases).
+
+## 0.3.0
+
+- Teach canonical output-preset paths and terminology in skill references
+  (`processing-and-variants.md`, playback, upload, webhooks, product overview,
+  web components `output-indexes`).
+- `known-endpoints.json` includes both canonical
+  (`/v1/output_preset`, `/v1/track/{track_id}/output`) and legacy
+  (`/v1/variant`, `/v1/track/{track_id}/variant`) paths.
+
 ## 0.1.1
 
 - Point signed-delivery docs link at

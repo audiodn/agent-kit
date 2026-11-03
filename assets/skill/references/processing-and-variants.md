@@ -1,6 +1,6 @@
-# Processing and variants
+# Processing and outputs
 
-After bytes upload, AudioDN processes the track (probe, waveform/levels, variant
+After bytes upload, AudioDN processes the track (probe, waveform/levels, output
 generation, optional fallback processing, cover extraction). A track is not
 immediately playable.
 
@@ -21,23 +21,25 @@ immediately playable.
 Do not assume a just-uploaded track is ready. The uploader component’s
 `file-uploaded` event means bytes were stored — not that processing finished.
 
-## Variants (format standardization)
+## Output presets (format standardization)
 
-- A **variant** is a reusable recipe (`variant_type_id`, delivery `index` such as `hq`, `lq`, `voice`).
-- A **track file** is the stored output of applying a variant. All of a track's
-  variant files live under the track's delivery prefix — `track.base_path` /
-  `track.base_url` from the track-creation response — plus a variant suffix and
-  extension (e.g. `{base_url}_preview.mp3`).
-- Track-specific API creation supports types such as `transcode` and `preview`
+- An **output preset** is a reusable recipe (`output_type_id` / legacy
+  `variant_type_id`, delivery `index` such as `hq`, `lq`, `voice`).
+- An **output** is the result of applying a preset to a track (stored file and/or
+  related data such as a transcript). Files live under the track's delivery
+  prefix — `track.base_path` / `track.base_url` from the track-creation response —
+  plus an index suffix and extension (e.g. `{base_url}_preview.mp3`).
+- Track-scoped API creation supports types such as `transcode` and `preview`
   (lossy codecs include `aac`, `mp3`, `ogg`, `opus` per docs). Preview bodies may
   include `preview_type`, `preview_seconds` / percent fields, and
   `preview_start_percent`. Optional `is_required` and `notes` are accepted.
   Org-wide recipes (analysis, waveform assets, original) are configured in the
   dashboard. Transcription fields on the track are org-provisioned, not a
-  self-serve variant.
+  self-serve preset. (Output presets were previously called variants.)
 
-Endpoints: `GET /v1/variant`, `GET /v1/variant/{variant_id}`,
-`POST /v1/track/{track_id}/variant`.
+Canonical endpoints: `GET /v1/output_preset`, `GET /v1/output_preset/{output_preset_id}`,
+`POST /v1/track/{track_id}/output`. Legacy aliases `/v1/variant` and
+`/v1/track/{track_id}/variant` remain supported.
 
 ## Terminology — “normalization”
 

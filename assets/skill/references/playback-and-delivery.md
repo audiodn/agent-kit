@@ -5,7 +5,7 @@ Gate all delivery on processing readiness. Pick one playback terminal per surfac
 
 Consumers are broad: the ADN Player component, a custom web/native player,
 **downloads**, or a **programmatic / non-visual** consumer (e.g. telephony /
-answering-machine playback). A server-created session returns signed variant URLs
+answering-machine playback). A server-created session returns signed output URLs
 any of these can use.
 
 ## Play sessions (per-listener)
@@ -15,8 +15,10 @@ unsupported — the handler currently errors). Authorized by a **Bearer** key th
 is **either** an API Access key on the server **or** a scoped Client-Side Player
 key used in-client (the two calls look nearly identical; only the key differs):
 
-- Body must include a non-empty `variants` array of delivery indexes (from
-  `GET /v1/variant`), plus `track_id` or `collection_id`, optional `expires_in`
+- Body must include a non-empty `variants` array of **output indexes** (from
+  `GET /v1/output_preset`; legacy `GET /v1/variant`). `variants` is the
+  historical wire key; the API also accepts `output_indexes` when `variants` is
+  omitted. Also pass `track_id` or `collection_id`, optional `expires_in`
   (seconds; default 3600, min 60, max 86400) and `is_downloadable`.
 - Returns `play_session_id` and `first_track` with signed `variants[].url`,
   waveform `levels`, and cover sizes. Pass the session ID to the ADN Player;
@@ -29,10 +31,11 @@ key used in-client (the two calls look nearly identical; only the key differs):
 
 Downloads require a session created with `is_downloadable: true`.
 
-1. Create the play session with `is_downloadable: true` (and the download variant
-   in `variants`).
+1. Create the play session with `is_downloadable: true` (and the download output
+   index in `variants`).
 2. `GET /v1/play/{play_session_id}/{play_track_id}/{variant_index}/download`
-   (no Bearer) returns a short-lived download URL.
+   (no Bearer) returns a short-lived download URL. Path segment is an output
+   index (`variant_index` is the historical name).
 3. Serve that URL to the client, or use `<audiodn-player downloadable>` — the
    attribute only works when the underlying key/session permits downloads.
 
@@ -50,14 +53,14 @@ to the ADN Player (the player accepts only a client key or `play-session-id`).
 
 Build the URL to sign from the `track.base_url` returned by every
 track-creation response (a durable prefix on the organization's unique
-`audiodelivery.net` subdomain): append the variant suffix and extension, e.g.
+`audiodelivery.net` subdomain): append the output index suffix and extension, e.g.
 `{base_url}_lq.mp3`, then sign. `track.base_path` is the same prefix without
 the host, for when you construct the host yourself.
 
 ## Inline share
 
 `GET /v1/stream/{track_id}/{share_key}` validates an Inline Share key and returns
-302 to a short-lived signed CDN URL for that key's single variant. No Bearer
+302 to a short-lived signed CDN URL for that key's single output index. No Bearer
 header. See https://audiodeliverynetwork.com/docs/api/share.
 
 ## Components

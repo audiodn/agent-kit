@@ -29,7 +29,7 @@ The upload lifecycle is multi-step. A session alone uploads nothing.
 
 5. **Wait for processing readiness** — poll `GET /v1/track/{track_id}` (Bearer) until a terminal status, or use the Track Processing webhook (preferred in production; see `references/webhooks.md`).
 
-6. **Request playback or delivery** only after the required variant/track file is ready.
+6. **Request playback or delivery** only after the required output/track file is ready.
 
 ## Persist the IDs (link uploads to playback)
 
@@ -38,9 +38,9 @@ them as the long-lived reference to the audio:
 
 - `track_id` — the durable ID for one track.
 - `collection_id` — the durable grouping the track belongs to.
-- variant delivery `index` (e.g. `hq`, `lq`) — the durable variant selector.
+- output delivery `index` (e.g. `hq`, `lq`) — the durable output selector.
 - `track.base_path` / `track.base_url` — the durable delivery prefix for the
-  track's variant files. Each variant file is that prefix plus a variant suffix
+  track's output files. Each output file is that prefix plus an index suffix
   and extension (e.g. `{base_url}_128.mp3`). `base_url` is `base_path` served
   from the organization's unique `audiodelivery.net` subdomain — store it if you
   use signed delivery, then HMAC-sign the resulting URLs. Never upload to it.

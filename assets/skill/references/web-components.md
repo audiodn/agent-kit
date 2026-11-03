@@ -26,7 +26,8 @@ Key attributes:
 - `api-key` **or** `play-session-id` (never both; never a server API Access key)
 - `scope` — `track` | `collection`
 - `id` — track or collection id matching scope
-- `variants` — delivery index(es) in priority order, e.g. `hq,lq` (first is default)
+- `outputs` — delivery output(s) in priority order, e.g. `hq,lq` (first is default). Preferred attribute.
+- `output-indexes` / `variants` — compatible aliases for the same list. Precedence: `outputs` → `output-indexes` → `variants`.
 - `size` — `small` | `regular` | `large` (default `large`; applies to the `default` layout)
 - `variant` — layout: `default` (full player) | `inline` (compact play/pause button with a clockwise progress ring + settings menu; shows no track info — surface it yourself). `height` sizes the inline button.
 - `theme` — `auto` | `dark` | `light`

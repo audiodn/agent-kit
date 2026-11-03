@@ -19,23 +19,23 @@ polling. Three independent webhooks exist; enable whichever you need.
 React to a track's overall outcome. Fires only on:
 
 - terminal statuses: `ready`, `incomplete`, `error`, `init_error`; and
-- files-complete: `track.files_completed_at` is stamped once every variant has
+- files-complete: `track.files_completed_at` is stamped once every output has
   been attempted.
 
 Transitional states (`initialized`, `processing`, `fallback`,
 `fallback_processing`) are **not** relayed. A track may deliver twice: an early
-`ready` (required variants done, `files_completed_at` null) then a later
+`ready` (required outputs done, `files_completed_at` null) then a later
 files-complete event. Prefer this over polling `GET /v1/track/{track_id}`.
 Key on `track_id` + `status`.
 
 ## Track Files (`track_file.created` / `track_file.failed`)
 
-One event per track file (a variant applied to a track) — easier than scanning a
-whole `files[]` array. Each payload carries `status` (`success` / `failed`) and a
-`file` object with `is_success` and the nested `variant`. On failure, `file.url`
-is null and the reason is in `message`. Use to unlock a per-variant asset (e.g. a
-lossless download) the moment it lands. Key on `file_id` (or `track_id` +
-`file.variant.index`).
+One event per track file (an output from an output preset) — easier than scanning
+a whole `files[]` array. Each payload carries `status` (`success` / `failed`) and
+a `file` object with `is_success` and the nested `variant` (historical field for
+the output preset). On failure, `file.url` is null and the reason is in
+`message`. Use to unlock a per-output asset (e.g. a lossless download) the moment
+it lands. Key on `file_id` (or `track_id` + `file.variant.index`).
 
 ## Collection Sync (`collection.created` / `collection.updated` / `collection.deleted`)
 

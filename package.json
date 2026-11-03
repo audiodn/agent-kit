@@ -1,6 +1,6 @@
 {
   "name": "@audiodn/agent-kit",
-  "version": "0.2.0",
+  "version": "0.3.1",
   "description": "Install AudioDN coding-agent guidance (AGENTS.md, CLAUDE.md, Copilot, Cursor, Skill synced from ai-plugin) and validate AudioDN integrations.",
   "type": "module",
   "bin": {
