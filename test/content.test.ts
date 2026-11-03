@@ -9,7 +9,7 @@ describe('canonical guidance content', () => {
   });
 
   it.each([
-    ['server-key boundary', /never put server api credentials/i],
+    ['server-key boundary', /never put api access credentials/i],
     ['no invented endpoints', /never invent endpoints/i],
     ['verify against OpenAPI', /audiodeliverynetwork\.com\/openapi\.json/],
     ['per-track upload requirement', /track_upload\.upload_url/],

@@ -1,7 +1,7 @@
 {
   "name": "@audiodn/agent-kit",
-  "version": "0.1.1",
-  "description": "Install AudioDN coding-agent guidance (AGENTS.md, CLAUDE.md, Copilot, Cursor, Skill) and validate AudioDN integrations.",
+  "version": "0.2.0",
+  "description": "Install AudioDN coding-agent guidance (AGENTS.md, CLAUDE.md, Copilot, Cursor, Skill synced from ai-plugin) and validate AudioDN integrations.",
   "type": "module",
   "bin": {
     "audiodn-agent-kit": "dist/cli.js"
@@ -50,8 +50,9 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "sync": "node scripts/sync-canonical.mjs",
+    "sync:skill": "node scripts/sync-from-plugin.mjs",
     "smoke": "node scripts/smoke.mjs",
-    "prepublishOnly": "npm run test && npm run build"
+    "prepublishOnly": "npm run sync:skill && npm run test && npm run build"
   },
   "devDependencies": {
     "@types/node": "^20.11.0",

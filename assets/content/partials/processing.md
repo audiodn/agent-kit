@@ -14,4 +14,4 @@ Determine readiness in one of two ways:
   transitional status.
 
 Never build a playback experience that assumes a just-uploaded track is ready.
-See `references/processing.md` in the Skill.
+See `references/processing-and-variants.md` in the Skill.

@@ -9,5 +9,5 @@ Configure webhooks in the dashboard to react to processing without polling:
   `success`/`failed`.
 - **Collection Sync**: collection create/update/delete events.
 
-Verify webhook authenticity and make handlers idempotent (deliveries can retry).
-See `references/webhooks.md` in the Skill.
+Bodies are currently unsigned — make handlers idempotent (deliveries can retry)
+and key on track/file IDs. See `references/webhooks.md` in the Skill.

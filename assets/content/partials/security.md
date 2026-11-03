@@ -11,4 +11,4 @@
 - **Least privilege on the client**: use resource-scoped Client-Side keys and
   short-lived, per-listener play sessions.
 
-See `references/security.md` in the Skill.
+See `references/troubleshooting.md` and `references/authentication.md` in the Skill.
