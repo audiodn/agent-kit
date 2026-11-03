@@ -15,10 +15,10 @@ unsupported — the handler currently errors). Authorized by a **Bearer** key th
 is **either** an API Access key on the server **or** a scoped Client-Side Player
 key used in-client (the two calls look nearly identical; only the key differs):
 
-- Body must include a non-empty `variants` array of **output indexes** (from
-  `GET /v1/output_preset`; legacy `GET /v1/variant`). `variants` is the
-  historical wire key; the API also accepts `output_indexes` when `variants` is
-  omitted. Also pass `track_id` or `collection_id`, optional `expires_in`
+- Body must include a non-empty `output_indexes` array (from
+  `GET /v1/output_preset`; legacy `GET /v1/variant`). `variants` is still
+  accepted on the same request and wins if both are set, so older clients keep
+  working. Also pass `track_id` or `collection_id`, optional `expires_in`
   (seconds; default 3600, min 60, max 86400) and `is_downloadable`.
 - Returns `play_session_id` and `first_track` with signed `variants[].url`,
   waveform `levels`, and cover sizes. Pass the session ID to the ADN Player;
