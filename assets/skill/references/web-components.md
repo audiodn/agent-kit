@@ -28,7 +28,7 @@ Key attributes:
 - `id` — track or collection id matching scope
 - `variants` — comma-separated delivery outputs in priority order, e.g. `hq,lq` (first is default). This is the attribute published `@audiodn/components` reads, including `@latest` on the CDN above.
 - `outputs` — the same list on the next components release. The current package ignores it, so do not replace `variants` on existing embeds yet. When a release reads both, `variants` wins, matching play-session requests.
-- `size` — `small` | `regular` | `large` (default `large`; applies to the `default` layout)
+- `size` — `x-small` | `small` | `regular` (default `regular`; applies to the `default` layout)
 - `variant` — layout: `default` (full player) | `inline` (compact play/pause button with a clockwise progress ring + settings menu; shows no track info — surface it yourself). `height` sizes the inline button.
 - `theme` — `auto` | `dark` | `light`
 - `volume`, `autoplay`, `downloadable` (request only; the key/session must allow downloads)
