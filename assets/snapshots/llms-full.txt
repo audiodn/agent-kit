@@ -318,8 +318,6 @@ Every page below is also available as clean Markdown by appending `.md` to its U
 - https://audiodeliverynetwork.com/docs/recipes/private-podcast — Entitlement-gated private podcast
 - https://audiodeliverynetwork.com/docs/recipes/preview-and-waveform — Preview clips + waveform workflow
 - https://audiodeliverynetwork.com/docs/recipes/vue-secure-upload — Secure upload in Vue / Nuxt
-- https://audiodeliverynetwork.com/docs/roadmap — Feature roadmap
-
 ## 13. Recipes and runnable examples
 
 Task-oriented recipes live under https://audiodeliverynetwork.com/docs/recipes. Each recipe

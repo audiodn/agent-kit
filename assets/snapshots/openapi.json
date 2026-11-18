@@ -209,6 +209,12 @@
           },
           "player_subtitle": {
             "type": "string"
+          },
+          "default_collection_id": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true,
+            "description": "Collection used when callers pass collection_id \"default\". Null when unset."
           }
         }
       },
@@ -360,7 +366,7 @@
               "null"
             ],
             "readOnly": true,
-            "description": "Plain-text transcription as paragraphs when transcription is enabled for the organization. Null when unavailable. Language is auto-detected unless provisioned otherwise. Transcription is not a self-serve / selectable variant — contact AudioDN if you need it."
+            "description": "Plain-text transcription as paragraphs when transcription is enabled for the organization. Null when unavailable. Language is auto-detected unless provisioned otherwise. Transcription is not a self-serve / selectable variant \u2014 contact AudioDN if you need it."
           },
           "transcription_language": {
             "type": [
@@ -696,7 +702,7 @@
             "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
-            "description": "Forbidden — API Access keys must be created in the dashboard, or the caller key is not an API Access key"
+            "description": "Forbidden \u2014 API Access keys must be created in the dashboard, or the caller key is not an API Access key"
           }
         }
       }
@@ -1565,9 +1571,19 @@
                 ],
                 "properties": {
                   "collection_id": {
-                    "type": "string",
-                    "format": "uuid",
-                    "description": "Required unless the API key is scoped to a collection."
+                    "oneOf": [
+                      {
+                        "type": "string",
+                        "format": "uuid"
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "default"
+                        ]
+                      }
+                    ],
+                    "description": "Required unless the API key is scoped to a collection. Pass the literal string \"default\" to use the organization's default collection."
                   },
                   "creator_id": {
                     "type": "string",
@@ -1878,7 +1894,7 @@
         ],
         "operationId": "addTrackVariant",
         "summary": "Add a track-specific variant",
-        "description": "Appends a new track file to an already-processed track and queues processing. Only 'transcode' and 'preview' are supported. Common body fields: variant_type_id, index. Transcode fields: codec, bitrate, is_stereo, is_strip_tags, is_strip_cover (lossy codecs only; codec defaults to aac at 128 kbps). Preview fields: preview_type, preview_seconds / preview_min_percent / preview_max_percent (when preview_type is seconds), preview_percent / preview_min_seconds / preview_max_seconds (when preview_type is percent), preview_start_percent — plus the same Transcode audio fields. The track is moved to 'processing' and returns to 'ready' when the file is generated. Prefer the Output Presets endpoints. This path remains fully supported with no removal date.",
+        "description": "Appends a new track file to an already-processed track and queues processing. Only 'transcode' and 'preview' are supported. Common body fields: variant_type_id, index. Transcode fields: codec, bitrate, is_stereo, is_strip_tags, is_strip_cover (lossy codecs only; codec defaults to aac at 128 kbps). Preview fields: preview_type, preview_seconds / preview_min_percent / preview_max_percent (when preview_type is seconds), preview_percent / preview_min_seconds / preview_max_seconds (when preview_type is percent), preview_start_percent \u2014 plus the same Transcode audio fields. The track is moved to 'processing' and returns to 'ready' when the file is generated. Prefer the Output Presets endpoints. This path remains fully supported with no removal date.",
         "parameters": [
           {
             "name": "track_id",
@@ -2062,7 +2078,7 @@
         ],
         "operationId": "createUploadSession",
         "summary": "Create upload session",
-        "description": "Creates an upload session for batch uploading tracks. By default returns an upload_session_id only — create tracks via POST /v1/upload/{upload_session_id}/track. Optionally include a nested `track` object to also create that track and receive track_id, the full track object (including delivery base_path/base_url), track_upload, and track_cover_upload on the session response (you can still add more tracks later).",
+        "description": "Creates an upload session for batch uploading tracks. By default returns an upload_session_id only \u2014 create tracks via POST /v1/upload/{upload_session_id}/track. Optionally include a nested `track` object to also create that track and receive track_id, the full track object (including delivery base_path/base_url), track_upload, and track_cover_upload on the session response (you can still add more tracks later).",
         "requestBody": {
           "required": true,
           "content": {
@@ -2074,9 +2090,19 @@
                 ],
                 "properties": {
                   "collection_id": {
-                    "type": "string",
-                    "format": "uuid",
-                    "description": "Required unless the API key is scoped to a collection."
+                    "oneOf": [
+                      {
+                        "type": "string",
+                        "format": "uuid"
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "default"
+                        ]
+                      }
+                    ],
+                    "description": "Required unless the API key is scoped to a collection. Pass the literal string \"default\" to use the organization's default collection."
                   },
                   "creator_id": {
                     "type": "string",
@@ -2213,7 +2239,7 @@
         ],
         "operationId": "getUploadSession",
         "summary": "Get upload session",
-        "description": "No authentication required — the session ID acts as the credential.",
+        "description": "No authentication required \u2014 the session ID acts as the credential.",
         "security": [],
         "parameters": [
           {
@@ -2269,7 +2295,7 @@
         ],
         "operationId": "createUploadSessionTrack",
         "summary": "Create a track within an upload session",
-        "description": "Call once per file to obtain a per-track upload URL. Returns the full track object, including the delivery base_path/base_url that variant filenames append to. No authentication required — the session ID acts as the credential.",
+        "description": "Call once per file to obtain a per-track upload URL. Returns the full track object, including the delivery base_path/base_url that variant filenames append to. No authentication required \u2014 the session ID acts as the credential.",
         "security": [],
         "parameters": [
           {
@@ -2506,7 +2532,7 @@
         ],
         "operationId": "getPlaySession",
         "summary": "Get play session",
-        "description": "No authentication required — the play session ID acts as the credential.",
+        "description": "No authentication required \u2014 the play session ID acts as the credential.",
         "security": [],
         "parameters": [
           {
@@ -2565,7 +2591,7 @@
         ],
         "operationId": "getPlayTrack",
         "summary": "Get a track within a play session",
-        "description": "No authentication required — the session ID acts as the credential.",
+        "description": "No authentication required \u2014 the session ID acts as the credential.",
         "security": [],
         "parameters": [
           {
@@ -2661,7 +2687,7 @@
         ],
         "operationId": "downloadPlayTrackVariant",
         "summary": "Download a variant of a track within a play session",
-        "description": "Returns a short-lived signed download URL for a specific variant. Only available when the session's stored is_downloadable is true; otherwise returns 403. No authentication required — the session ID acts as the credential. The path segment is an output (delivery) index. Response download.output_index mirrors download.variant.",
+        "description": "Returns a short-lived signed download URL for a specific variant. Only available when the session's stored is_downloadable is true; otherwise returns 403. No authentication required \u2014 the session ID acts as the credential. The path segment is an output (delivery) index. Response download.output_index mirrors download.variant.",
         "security": [],
         "parameters": [
           {
