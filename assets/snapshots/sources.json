@@ -1,18 +1,18 @@
 {
-  "openapiVersion": "1.0.0",
+  "openapiVersion": "1.5.0",
   "generatedBy": "scripts/sync-canonical.mjs",
   "sources": [
     {
       "name": "openapi.json",
       "url": "https://audiodeliverynetwork.com/openapi.json",
-      "fetchedAt": "2026-07-14",
-      "sha256": "e1554673a4d7287a15460bdc2761e0bbc38286b4e101df26b00fc5e9205e2deb"
+      "fetchedAt": "2026-11-23",
+      "sha256": "5ffcfaf28011b64dd283ed1207555f8b43d494bc4d54868d048c9ffe84267918"
     },
     {
       "name": "llms-full.txt",
       "url": "https://audiodeliverynetwork.com/llms-full.txt",
-      "fetchedAt": "2026-07-14",
-      "sha256": "2ae14fb31bdc086b40e20b61e57ff01957e45dc3c59616940db3e2eac0db538e"
+      "fetchedAt": "2026-11-23",
+      "sha256": "5e756b490e624b81df15dc4a54e34a80fd49fb0fd2b68131ad9b33093b6bf330"
     }
   ]
 }
